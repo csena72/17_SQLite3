@@ -1,0 +1,24 @@
+{
+  "name": "17_sqlite3",
+  "version": "1.0.0",
+  "description": "### Consigna:  Sobre el desafío entregable de la última clase, cambiar la persistencia de los mensajes en el filesystem por persistencia en base de datos SQLite3. Agregar una capa de persistencia en la Api Rest de productos utilizando el servicio de base de datos MariaDB. Cumplir con todas las operaciones del CRUD: Select, Insert, Update, Delete",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csena72/17_SQLite3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csena72/17_SQLite3/issues"
+  },
+  "homepage": "https://github.com/csena72/17_SQLite3#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.3",
+    "socket.io": "^4.1.3"
+  }
+}
