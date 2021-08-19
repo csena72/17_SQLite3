@@ -10,6 +10,8 @@ const server = http.createServer(app);
 const {Server} = require('socket.io');
 const io = new Server(server);
 
+const ProductoDAO = require('./models/dao/producto');
+
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
@@ -20,10 +22,11 @@ app.set('views', './views');
 
 app.use(express.static(__dirname + '/public'));
 
-let productos = [];
-let producto;
-let productosWs = [];
-let mensajes = [];
+let productos = []; // esto en mysql
+
+let producto; // esto en mysql
+let productosWs = []; // esto va en sqlite
+let mensajes = []; // esto va en sqlite
 
 io.on('connection', (socket) => {
 
@@ -52,6 +55,9 @@ app.get('/', (req,res) => {
 });
 
 app.get("/productos/vista", (req, res) => {
+    const producto = new ProductoDAO();    
+    const productos = producto.getProductos();
+
   res.render('productos', {productos: productos})
 });
 
@@ -72,10 +78,9 @@ routerApi.get("/productos/:id", (req, res) => {
 });
 
 routerApi.post("/productos", (req, res) => {
-  producto = req.body;
-  producto.id = productos.length + 1;
-  productos.push(req.body);
-
+  const producto = new ProductoDAO();
+  producto.createProducto(req.body);
+  
   res.redirect('/');
 });
 
